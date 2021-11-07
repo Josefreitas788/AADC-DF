@@ -3,10 +3,10 @@ Aplicação web em Django para visualização de dados da vacinação no DF.
 
 ## Componentes do projeto:
 
-Heloise Katharine Pereira Silva
-José Antônio Alves De Freitas Filho
-Leandro Marques Rodrigues
-Nínive Helen Horacio Da Silva
+* Heloise Katharine Pereira Silva
+* José Antônio Alves De Freitas Filho
+* Leandro Marques Rodrigues
+* Nínive Helen Horacio Da Silva
 
 ## Objetivos:
 
