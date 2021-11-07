@@ -24,13 +24,13 @@ Web
 
 ## Tecnologias associadas:
 
-Para a implementação das páginas nós vamos utilizar o framework Django
-Banco de dados: MARIADB
-Python para a análise dos dados
+* Para a implementação das páginas nós vamos utilizar o framework Django
+* Banco de dados: MARIADB
+* Python para a análise dos dados
 
 ## Metodologia de Desenvolvimento a ser utilizada
 
-Metodologia Scrum e Kanban.
+* Metodologia Scrum e Kanban.
 
 
 
