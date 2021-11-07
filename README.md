@@ -10,11 +10,12 @@ Aplicação web em Django para visualização de dados da vacinação no DF.
 
 ## Objetivos:
 
-  Os objetivos são: fazer uma análise dos dados da vacinação de COVID-19 no DF e criar um site que possa disponibilizar esses dados de forma intuitiva
+Os objetivos são: fazer uma análise dos dados da vacinação de COVID-19 no DF e criar um site que possa disponibilizar esses dados de forma intuitiva
 
 ## Justificativa da escolha do tema:
 
-  Ao tentar encontrar dados da vacinação no DF para descobrirmos a possibilidade de uma volta das atividades letivas de forma presencial nós não conseguimos encontrar um site que fosse intuitivo o suficiente para que conseguíssemos coletar informações, segue abaixo o site disponibilizado pelo GDF:
+Ao tentar encontrar dados da vacinação no DF para descobrirmos a possibilidade de uma volta das atividades letivas de forma presencial nós não conseguimos encontrar um site que fosse intuitivo o suficiente para que conseguíssemos coletar informações, segue abaixo o site disponibilizado pelo GDF:
+  
 https://info.saude.df.gov.br/relatorio-de-vacinacao-covid-19/
 
 ## Plataforma:
