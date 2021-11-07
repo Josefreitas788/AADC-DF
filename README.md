@@ -1,4 +1,4 @@
-# AADC-DF
+# AADC-DF 📚
 Aplicação web em Django para visualização de dados da vacinação no DF.
 
 ## Componentes do projeto:
