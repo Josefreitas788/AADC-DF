@@ -1,18 +1,18 @@
 # AADC-DF 📚
 Aplicação web em Django para visualização de dados da vacinação no DF.
 
-## Componentes do projeto:
+## Componentes do projeto
 
 * Heloise Katharine Pereira Silva
 * José Antônio Alves De Freitas Filho
 * Leandro Marques Rodrigues
 * Nínive Helen Horacio Da Silva
 
-## Justificativa da quantidade de integrantes do projeto:
+## Justificativa da quantidade de integrantes do projeto
 
 O grupo é composto por quatro integrantes, como nenhum dos integrantes sabe Django, duas pessoas serão responsáveis por cuidar do desenvolvimento do site, enquanto os outros dois integrantes serão responsáveis por realizar o tratamento e a análise dos dados e por conectar com o banco de dados. 
 
-## Objetivos:
+## Objetivos
 
 O objetivo principal é realizar o tratamento e a análise dos dados da vacinação de COVID-19 no DF e criar um site que possa disponibilizar esses dados de forma intuitiva para os usuários. 
 Iremos utilizar o processo de ETL ( Extract, Transform, Load)
@@ -29,17 +29,17 @@ Carregamento dos dados no banco de dados MariaDB.
 
 Por fim, será disponibilizado no site desenvolvido em Django o Dashboard com os resultados que foram obtidos na etapa anterior.  
 
-## Justificativa da escolha do tema:
+## Justificativa da escolha do tema
 
 Ao tentar encontrar dados da vacinação no DF para descobrirmos a possibilidade de uma volta das atividades letivas de forma presencial nós não conseguimos encontrar um site que fosse intuitivo o suficiente para que conseguíssemos coletar informações, segue abaixo o site disponibilizado pelo GDF:
   
 * https://info.saude.df.gov.br/relatorio-de-vacinacao-covid-19/
 
-## Plataforma:
+## Plataforma
 
 Web
 
-## Tecnologias associadas:
+## Tecnologias associadas
 
 * Para a implementação das páginas nós vamos utilizar o framework Django
 * Banco de dados: MARIADB
@@ -49,7 +49,7 @@ Web
 
 * Metodologia Scrum e Kanban.
 
-## Cronograma do projeto: 
+## Cronograma do projeto ⏳
 ![cronograma](https://user-images.githubusercontent.com/44498658/144300797-fd7c11be-c90d-4426-a01d-4a705fc1540d.png)
 
 
