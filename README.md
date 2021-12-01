@@ -37,7 +37,7 @@ Ao tentar encontrar dados da vacinação no DF para descobrirmos a possibilidade
 
 ## Plataforma
 
-Web
+* Web
 
 ## Tecnologias associadas
 
