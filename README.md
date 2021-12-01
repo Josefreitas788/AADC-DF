@@ -8,9 +8,26 @@ Aplicação web em Django para visualização de dados da vacinação no DF.
 * Leandro Marques Rodrigues
 * Nínive Helen Horacio Da Silva
 
+## Justificativa da quantidade de integrantes do projeto:
+
+O grupo é composto por quatro integrantes, como nenhum dos integrantes sabe Django, duas pessoas serão responsáveis por cuidar do desenvolvimento do site, enquanto os outros dois integrantes serão responsáveis por realizar o tratamento e a análise dos dados e por conectar com o banco de dados. 
+
 ## Objetivos:
 
-Os objetivos são: fazer uma análise dos dados da vacinação de COVID-19 no DF e criar um site que possa disponibilizar esses dados de forma intuitiva
+O objetivo principal é realizar o tratamento e a análise dos dados da vacinação de COVID-19 no DF e criar um site que possa disponibilizar esses dados de forma intuitiva para os usuários. 
+Iremos utilizar o processo de ETL ( Extract, Transform, Load)
+
+* Extração:
+Será utilizado o DataSet encontrado no link a seguir: 
+https://opendatasus.saude.gov.br/dataset/covid-19-vacinacao/resource/ef3bd0b8-b605-474b-9ae5-c97390c197a8
+
+* Transformação: 
+No processo de transformação vamos realizar o tratamento dos dados utilizando Python, Pandas, Numpy, etc.
+
+* Carga: 
+Carregamento dos dados no banco de dados MariaDB.
+
+Por fim, será disponibilizado no site desenvolvido em Django o Dashboard com os resultados que foram obtidos na etapa anterior.  
 
 ## Justificativa da escolha do tema:
 
@@ -31,6 +48,11 @@ Web
 ## Metodologia de Desenvolvimento a ser utilizada
 
 * Metodologia Scrum e Kanban.
+
+## Cronograma do projeto: 
+![cronograma](https://user-images.githubusercontent.com/44498658/144300797-fd7c11be-c90d-4426-a01d-4a705fc1540d.png)
+
+
 
 
 
