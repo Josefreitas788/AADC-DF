@@ -1,12 +1,47 @@
 # AADC-DF 📚
 Aplicação web em Django para visualização de dados da vacinação no DF.
 
-## Componentes do projeto
 
-* Heloise Katharine Pereira Silva
-* José Antônio Alves De Freitas Filho
-* Leandro Marques Rodrigues
-* Nínive Helen Horacio Da Silva
+## 🤝 Integrantes do Projeto
+
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/jose.jpg" width="100px;" alt="Jose"/><br>
+        <sub>
+          <b>José Antônio Alves De Freitas Filho</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/h.jpg" width="100px;" alt="Heloise"/><br>
+        <sub>
+          <b>Heloise Katharine Pereira Silva</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="" width="100px;" alt="Leandro"/><br>
+        <sub>
+          <b>Leandro Marques Rodrigues</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/n.png" width="100px;" alt="Ninive"/><br>
+        <sub>
+          <b>Nínive Helen Horacio Da Silva</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
 
 ## Justificativa da quantidade de integrantes do projeto
 
