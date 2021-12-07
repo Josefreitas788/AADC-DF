@@ -19,7 +19,7 @@ Aplicação web em Django para visualização de dados da vacinação no DF.
       <a href="https://github.com/HeloiseKatharine">
         <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/h.jpg" width="100px;" alt="Heloise"/><br>
         <sub>
-          <b>Heloise Katharine/b>
+          <b>Heloise Katharine</b>
         </sub>
       </a>
     </td>
