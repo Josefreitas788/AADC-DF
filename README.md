@@ -11,7 +11,7 @@ Aplicação web em Django para visualização de dados da vacinação no DF.
       <a href="https://github.com/Josefreitas788">
         <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/jose.jpg" width="100px;" alt="Jose"/><br>
         <sub>
-          <b>José Antônio Alves De Freitas Filho</b>
+          <b>José Antônio Alves</b>
         </sub>
       </a>
     </td>
@@ -19,7 +19,7 @@ Aplicação web em Django para visualização de dados da vacinação no DF.
       <a href="https://github.com/HeloiseKatharine">
         <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/h.jpg" width="100px;" alt="Heloise"/><br>
         <sub>
-          <b>Heloise Katharine Pereira Silva</b>
+          <b>Heloise Katharine/b>
         </sub>
       </a>
     </td>
@@ -27,7 +27,7 @@ Aplicação web em Django para visualização de dados da vacinação no DF.
       <a href="https://github.com/leandromqrs">
         <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/lea.jpg" width="100px;" alt="Leandro"/><br>
         <sub>
-          <b>Leandro Marques Rodrigues</b>
+          <b>Leandro Marques</b>
         </sub>
       </a>
     </td>
@@ -35,7 +35,7 @@ Aplicação web em Django para visualização de dados da vacinação no DF.
       <a href="https://github.com/ninivehelen">
         <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/n.png" width="100px;" alt="Ninive"/><br>
         <sub>
-          <b>Nínive Helen Horacio Da Silva</b>
+          <b>Nínive Helen</b>
         </sub>
       </a>
     </td>
