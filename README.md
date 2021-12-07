@@ -4,12 +4,11 @@ Aplicação web em Django para visualização de dados da vacinação no DF.
 
 ## 🤝 Integrantes do Projeto
 
-
 <table>
   <tr>
     <td align="center">
       <a href="https://github.com/Josefreitas788">
-        <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/jose.jpg" width="100px;" alt="Jose"/><br>
+        <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/jose.jpg" heigth="120px;" width="120px;"  alt="Jose"/><br>
         <sub>
           <b>José Antônio Alves</b>
         </sub>
@@ -17,15 +16,15 @@ Aplicação web em Django para visualização de dados da vacinação no DF.
     </td>
     <td align="center">
       <a href="https://github.com/HeloiseKatharine">
-        <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/h.jpg" width="100px;" alt="Heloise"/><br>
+        <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/h.jpg" heigth="120px;" width="120px;" alt="Heloise"/><br>
         <sub>
-          <b>Heloise Katharine</b>
+          <b>Heloise Katharine/b>
         </sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/leandromqrs">
-        <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/lea.jpg" width="100px;" alt="Leandro"/><br>
+        <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/lea.jpg" heigth="120px;" width="120px;" alt="Leandro"/><br>
         <sub>
           <b>Leandro Marques</b>
         </sub>
@@ -33,7 +32,7 @@ Aplicação web em Django para visualização de dados da vacinação no DF.
     </td>
     <td align="center">
       <a href="https://github.com/ninivehelen">
-        <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/n.png" width="100px;" alt="Ninive"/><br>
+        <img src="https://github.com/Josefreitas788/AADC-DF/blob/main/img/n.png" heigth="120px;" width="120px;" alt="Ninive"/><br>
         <sub>
           <b>Nínive Helen</b>
         </sub>
