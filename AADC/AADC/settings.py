@@ -73,12 +73,25 @@ WSGI_APPLICATION = 'AADC.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+#instale o mysqlclient: https://pypi.org/project/mysqlclient/
+#crie o banco de dados com o comando: CREATE DATABASE 'db_aadc' CHARACTER SET utf8;
+#crie a tabela usuarios com o comando: create table usuarios( id_user primarykey not null auto_increment, nome varchar(75) not null, senha varchar(75) not null) ENGINE=INNODB;
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS':{
+            'read_default_file': '/path/to/my.conf',
+        },
     }
 }
+
+#my.conf
+[client]
+database = 'db_aadc'
+user = 'coloque seu usuario'
+password = 'coloque sua senha'
+default-character-set = 'utf-8'
 
 
 # Password validation
@@ -87,7 +100,7 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
+        },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
