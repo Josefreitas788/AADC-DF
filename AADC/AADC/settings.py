@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'AADC',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -83,7 +84,10 @@ WSGI_APPLICATION = 'AADC.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'baseaadc',
+        'NAME': 'Cluster0',
+        'ENFORCE_SHEMA': False,
+        'CLIENTE':{
+            'host':'mongodb+srv://<ColoqueSeuUsuarioAqui>:<ColoqueSuaSenhaAqui>@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'            }
        
     }
 }
