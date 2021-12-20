@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-wnxd9&t=$ds2w)zri((5-u%xfwx7)9$yv(#)%%3^8)tbpbc+d$'
+SECRET_KEY = 'django-insecure-vo_bg+@o5&7ib-l*gebo9-)34f9mu8&z&^a07$2mmqvx1vsf1e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -73,19 +73,20 @@ WSGI_APPLICATION = 'AADC.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-#instale o mysqlclient: https://pypi.org/project/mysqlclient/
-#crie o banco de dados com o comando: CREATE DATABASE 'db_aadc' CHARACTER SET utf8;
-#crie a tabela usuarios com o comando: create table usuarios( id_user primarykey not null auto_increment, nome varchar(75) not null, senha varchar(75) not null) ENGINE=INNODB;
+#DATABASES = {
+  #  'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+     #   'NAME': BASE_DIR / 'db.sqlite3',
+  #  }
+#}
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS':{
-            'read_default_file': '/my.cnf',
-        },
+        'ENGINE': 'djongo',
+        'NAME': 'baseaadc',
+       
     }
 }
-
 
 
 # Password validation
@@ -94,7 +95,7 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-        },
+    },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
