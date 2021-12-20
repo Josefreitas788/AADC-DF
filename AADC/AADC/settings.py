@@ -81,17 +81,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS':{
-            'read_default_file': '/path/to/my.conf',
+            'read_default_file': '/my.cnf',
         },
     }
 }
 
-#my.conf
-[client]
-database = 'db_aadc'
-user = 'coloque seu usuario'
-password = 'coloque sua senha'
-default-character-set = 'utf-8'
 
 
 # Password validation
