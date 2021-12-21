@@ -81,15 +81,13 @@ WSGI_APPLICATION = 'AADC.wsgi.application'
   #  }
 #}
 
-USERNAME = 'USUARIO'
-PASSWORD = 'SENHA'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'Cluster0',
         'ENFORCE_SHEMA': False,
         'CLIENT':{
-            'host':f'mongodb+srv://{USERNAME}:{PASSWORD}@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'            
+            'host':'mongodb+srv://<name:<senha@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'            
         },
        
     }
