@@ -81,19 +81,19 @@ WSGI_APPLICATION = 'AADC.wsgi.application'
   #  }
 #}
 
+USERNAME = 'usuario'
+PASSWORD = 'senha'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'Cluster0',
         'ENFORCE_SHEMA': False,
         'CLIENT':{
-            'host':'mongodb+srv://<name:<senha@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'            
+            'host':f'mongodb+srv://{USERNAME}:{PASSWORD}@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'            
         },
        
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
