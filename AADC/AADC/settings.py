@@ -86,8 +86,9 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'Cluster0',
         'ENFORCE_SHEMA': False,
-        'CLIENTE':{
-            'host':'mongodb+srv://<ColoqueSeuUsuarioAqui>:<ColoqueSuaSenhaAqui>@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'            }
+        'CLIENT':{
+            'host':'mongodb+srv://<SeuUsuario:<SuaSenha>@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'            
+        },
        
     }
 }
