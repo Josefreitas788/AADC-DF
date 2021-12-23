@@ -91,7 +91,6 @@ DATABASES = {
         'CLIENT':{
             'host':f'mongodb+srv://{USERNAME}:{PASSWORD}@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'            
         },
-       
     }
 }
 # Password validation
