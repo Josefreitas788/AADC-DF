@@ -1,1 +1,0 @@
-# Módulo destinado a agrupar todas as funções que usaremos para analisar os dados 
