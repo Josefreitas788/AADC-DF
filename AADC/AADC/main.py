@@ -1,5 +1,6 @@
 import pandas as pd 
 import matplotlib.pyplot as plt
+from IPython.display import display
 
 # Importando os dados
 # add o caminho dos dados 
@@ -29,3 +30,21 @@ dados_vacina.drop(dados_vacina.loc[dados_vacina['paciente_racacor_valor'] == 50.
 
 # Exportando dados
 #dados_vacina.to_csv('dados_vacina.csv')
+
+
+# Quantidade de pessoas que tomaram a 1°, 2° e 3° dose
+def quant_dose123():
+
+    coluna_descricao_dose = dados_vacina['vacina_descricao_dose']
+    
+    doses = coluna_descricao_dose.value_counts()
+    labels = ['1° Dose', '2° Dose', 'Dose única']
+    plt.style.use("ggplot")
+    explode = (0.1, 0.0, 0.0)
+    
+    doses.plot.pie(autopct='%1.1f%%', explode = explode, shadow=True, startangle = 90, ylabel='', title = 'Porcentagem de pessoas que tomaram a 1° dose, 2° dose e a dose única.\n', subplots=True, labels = ['', '', '']) 
+
+    L = plt.legend( bbox_to_anchor=(1, 0, 0.5, 1), loc='center left', labels = labels)
+    plt.show() 
+    
+quant_dose123()
