@@ -69,7 +69,12 @@ def graf_regiao_geografica ():
     graf.plot.barh()
     plt.show() 
 
+def teste():
+    from cep_df import cep_df
+    
+    cep_df(70680)
 
 # Chamando as funções 
+teste()
 #graf_quant_dose123()
-graf_regiao_geografica()
+#graf_regiao_geografica()
