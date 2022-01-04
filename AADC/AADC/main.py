@@ -1,6 +1,7 @@
 import pandas as pd 
 import matplotlib.pyplot as plt
 from IPython.display import display
+from cep_df import cep_df
 
 # Importando os dados
 # add o caminho dos dados 
@@ -70,8 +71,6 @@ def graf_regiao_geografica ():
     plt.show() 
 
 def teste():
-    from cep_df import cep_df
-    
     cep_df(70680)
 
 # Chamando as funções 
