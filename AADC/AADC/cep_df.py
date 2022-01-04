@@ -32,11 +32,14 @@ def cep_df(cep):
         fim = int(result.index('<td width="55">'))
 
         resultado = result[ inicio : fim ]
-
+        
+        #Logradouro/Nome | Bairro/Distrito | Localidade/UF
         resultado = html.unescape(resultado)
         resultado = decode_texto(resultado)
 
-        print(resultado)
+        #Localidade/UF
+        localidade = resultado[ len(resultado) - (resultado[::-1].find('>dt<')):len(resultado) - 5]
+        return localidade
 
     except ValueError: 
-        print('Indefinido')
+        return 'Indefinido' 
