@@ -13,6 +13,12 @@ def decode_texto(texto):
     texto = texto.replace('\\xc1', 'Á')
     texto = texto.replace('\\xed', 'í')
     texto = texto.replace('\\xe2', 'â')
+    texto = texto.replace('\\xe3', 'ã')
+    texto = texto.replace('\\xfa', 'ú')
+    texto = texto.replace('\\xe7', 'ç')
+    texto = texto.replace('\\xf5', 'õ')
+    texto = texto.replace('\\xf4', 'ô')
+    
     return texto
 
 def cep_df(cep):
@@ -36,10 +42,18 @@ def cep_df(cep):
         #Logradouro/Nome | Bairro/Distrito | Localidade/UF
         resultado = html.unescape(resultado)
         resultado = decode_texto(resultado)
-
+        
         #Localidade/UF
-        localidade = resultado[ len(resultado) - (resultado[::-1].find('>dt<')):len(resultado) - 5]
-        return localidade
+        #localidade = resultado[ len(resultado) - (resultado[::-1].find('>dt<')):len(resultado) - 5]
+
+        ini = resultado.find('<td>')
+        fim = resultado.find('</td>')
+
+        # Bairro/Distrito | RE
+        re = resultado[ini + len('<td>'):(ini + resultado[ini:].find('</td>'))]
+       
+        return re
 
     except ValueError: 
         return 'Indefinido' 
+
