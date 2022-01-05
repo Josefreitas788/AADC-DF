@@ -57,7 +57,7 @@ def graf_quant_dose123():
 
 
 # Classificação por região geográfica.
-def graf_regiao_geografica ():
+def graf_regiao_geografica_brasil ():
 
     # Filtrando dados do DataFrame
     colunas = ['paciente_endereco_cep', 'paciente_endereco_nmmunicipio', 'paciente_endereco_uf']
@@ -70,10 +70,40 @@ def graf_regiao_geografica ():
     graf.plot.barh()
     plt.show() 
 
-def teste():
-    cep_df(70680)
+def graf_regiao_geografica_df ():
+
+    # Filtrando dados do DataFrame
+    colunas = ['paciente_endereco_cep', 'paciente_endereco_nmmunicipio', 'paciente_endereco_uf']
+    dados_regiao_geografica_df = dados_vacina.filter(items=colunas)
+
+    dados_regiao_geografica_df = dados_regiao_geografica_df[dados_regiao_geografica_df.paciente_endereco_uf == 'DF']
+
+    #for i in dados_regiao_geografica_df['paciente_endereco_cep']:
+    #    dados_regiao_geografica_df['RA'] = cep_df(i)
+
+    '''
+    list_cep = []
+    for i in dados_regiao_geografica_df.paciente_endereco_cep:
+        list_cep.append(cep_df(i))
+        print(cep_df(i))
+    '''
+    
+
+    dados_regiao_geografica_df['RA'] = [cep_df(cep) for cep in dados_regiao_geografica_df.paciente_endereco_cep]
+
+    #dados_regiao_geografica_df['RA'] = cep_df(dados_regiao_geografica_df['paciente_endereco_cep'])
+    '''
+    tt = dados_regiao_geografica_df['paciente_endereco_cep'][0]
+    print(tt)
+    print(cep_df(tt))
+    '''
+
+    print(dados_regiao_geografica_df)
+
+
+
 
 # Chamando as funções 
-teste()
 #graf_quant_dose123()
 #graf_regiao_geografica()
+graf_regiao_geografica_df()
