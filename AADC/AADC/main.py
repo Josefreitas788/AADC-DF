@@ -63,11 +63,12 @@ def graf_regiao_geografica_brasil ():
     colunas = ['paciente_endereco_cep', 'paciente_endereco_nmmunicipio', 'paciente_endereco_uf']
     dados_regiao_geografica = dados_vacina.filter(items=colunas)
 
-    # Gráfico UF do paciente | falta terminar
-    #graf = dados_vacina['paciente_endereco_uf'].value_counts()
-    graf = dados_vacina.groupby('paciente_endereco_uf').count()
-    #print(graf)
-    graf.plot.barh()
+    # Gráfico UF do paciente 
+    graf = (dados_vacina['paciente_endereco_uf'].value_counts())
+
+    print(graf)
+    graf.plot.bar(title = 'Localização geográfica das pessoas que se vacinaram no DF', xlabel= 'Estados', ylabel = 'Quantidade de pessoas')
+    
     plt.show() 
 
 def graf_regiao_geografica_df ():
@@ -78,25 +79,8 @@ def graf_regiao_geografica_df ():
 
     dados_regiao_geografica_df = dados_regiao_geografica_df[dados_regiao_geografica_df.paciente_endereco_uf == 'DF']
 
-    #for i in dados_regiao_geografica_df['paciente_endereco_cep']:
-    #    dados_regiao_geografica_df['RA'] = cep_df(i)
-
-    '''
-    list_cep = []
-    for i in dados_regiao_geografica_df.paciente_endereco_cep:
-        list_cep.append(cep_df(i))
-        print(cep_df(i))
-    '''
-    
-
+    #chamando a função cep_df para obter a RA
     dados_regiao_geografica_df['RA'] = [cep_df(cep) for cep in dados_regiao_geografica_df.paciente_endereco_cep]
-
-    #dados_regiao_geografica_df['RA'] = cep_df(dados_regiao_geografica_df['paciente_endereco_cep'])
-    '''
-    tt = dados_regiao_geografica_df['paciente_endereco_cep'][0]
-    print(tt)
-    print(cep_df(tt))
-    '''
 
     print(dados_regiao_geografica_df)
 
@@ -105,5 +89,5 @@ def graf_regiao_geografica_df ():
 
 # Chamando as funções 
 #graf_quant_dose123()
-#graf_regiao_geografica()
-graf_regiao_geografica_df()
+graf_regiao_geografica_brasil()
+#graf_regiao_geografica_df()
