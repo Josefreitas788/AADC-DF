@@ -57,22 +57,57 @@ def graf_quant_dose123():
 
 
 # Classificação por região geográfica.
-def graf_regiao_geografica_brasil ():
+def graf_regiao_geografica_estados():
 
     # Filtrando dados do DataFrame
-    colunas = ['paciente_endereco_cep', 'paciente_endereco_nmmunicipio', 'paciente_endereco_uf']
+    colunas = ['paciente_endereco_uf']
     dados_regiao_geografica = dados_vacina.filter(items=colunas)
 
     # Gráfico UF do paciente 
-    graf = (dados_vacina['paciente_endereco_uf'].value_counts())
+    graf = (dados_regiao_geografica['paciente_endereco_uf'].value_counts())
 
-    print(graf)
-    graf.plot.bar(title = 'Localização geográfica das pessoas que se vacinaram no DF', xlabel= 'Estados', ylabel = 'Quantidade de pessoas')
-    
+    graf.plot.bar(title = 'Localização geográfica das pessoas que se vacinaram no DF\n', xlabel= 'Estados', ylabel = 'Quantidade de pessoas')
     plt.show() 
 
-def graf_regiao_geografica_df ():
+# Classificação por região geográfica.
+def graf_regiao_geografica_paises():
 
+    paises  = ['Brasil', 'Não informado', 'Ruanda' 'Venezuela' ,'Japão', 'Congo', 'Bolívia' , 'Portugal', 'São Tomé e Príncipe', 'Gibraltar', 'Colômbia', 'Andorra']
+
+    # Filtrando dados do DataFrame
+    colunas = ['paciente_endereco_nmpais']
+    regiao_geografica_paises = dados_vacina.filter(items=colunas)
+
+    # Gráfico país do paciente 
+    # graf = (regiao_geografica_paises['paciente_endereco_nmpais'].value_counts())
+    graf = regiao_geografica_paises[(regiao_geografica_paises['paciente_endereco_nmpais'] != 'BRASIL') & (regiao_geografica_paises['paciente_endereco_nmpais'] != 'Não informado')].value_counts()
+
+    tt = 'Ruanda', 'Venezuela', 'Bolívia' ,  'Congo', 'Japão', 'Andorra','Colômbia', 'Gibraltar', 'Portugal', 'São Tomé e Príncipe'
+
+    '''
+    RUANDA                               4
+    VENEZUELA                            3
+    BOLIVIA                              2
+    CONGO, REPUBLICA DO (BRAZZAVILLE)    2
+    JAPAO                                2  
+    ANDORRA                              1
+    COLOMBIA                             1
+    GIBRALTAR                            1
+    PORTUGAL                             1
+    SAO TOME E PRINCIPE                  1
+    '''
+    print(graf)
+    graf.plot.pie(labels = tt)
+
+    plt.show() 
+
+
+
+
+
+
+# Testes
+def graf_regiao_geografica_df ():
     # Filtrando dados do DataFrame
     colunas = ['paciente_endereco_cep', 'paciente_endereco_nmmunicipio', 'paciente_endereco_uf']
     dados_regiao_geografica_df = dados_vacina.filter(items=colunas)
@@ -85,9 +120,8 @@ def graf_regiao_geografica_df ():
     print(dados_regiao_geografica_df)
 
 
-
-
 # Chamando as funções 
 #graf_quant_dose123()
-graf_regiao_geografica_brasil()
+#graf_regiao_geografica_estados()
 #graf_regiao_geografica_df()
+graf_regiao_geografica_paises()
