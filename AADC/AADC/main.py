@@ -69,27 +69,33 @@ def graf_regiao_geografica_estados():
 
 def graf_regiao_geografica_paises():
 
-
     paises  = ['Brasil', 'Não informado', 'Ruanda' 'Venezuela' ,'Japão', 'Congo', 'Bolívia' , 'Portugal', 'São Tomé e Príncipe', 'Gibraltar', 'Colômbia', 'Andorra']
 
-    labels = 'Ruanda', 'Venezuela', 'Bolívia' ,  'Congo', 'Japão', 'Andorra','Colômbia', 'Gibraltar', 'Portugal', 'São Tomé e Príncipe'
+    labels1 = 'Ruanda', 'Venezuela', 'Bolívia' ,  'Congo', 'Japão', 'Andorra','Colômbia', 'Gibraltar', 'Portugal', 'São Tomé e Príncipe'
+    labels0 = 'Brasil', 'Outros'
+
 
     # Filtrando dados do DataFrame
     colunas = ['paciente_endereco_nmpais']
     regiao_geografica_paises = dados_vacina.filter(items=colunas)
 
     # Gráfico país do paciente 
-    graf_paises = (regiao_geografica_paises['paciente_endereco_nmpais'].value_counts())
+    #graf_paises = (regiao_geografica_paises['paciente_endereco_nmpais'].value_counts())
+
+    # mudar as labels
+    #graf_paises = (regiao_geografica_paises[(regiao_geografica_paises['paciente_endereco_nmpais'] != 'BRASIL') = 'D'] .value_counts())
+
     graf_paises_estrangeiros = regiao_geografica_paises[(regiao_geografica_paises['paciente_endereco_nmpais'] != 'BRASIL') & (regiao_geografica_paises['paciente_endereco_nmpais'] != 'Não informado')].value_counts()
 
     #####
+    '''
     fig, axs = plt.subplots(1,2)
     axs[0].pie(graf_paises, shadow=True, startangle=90)
-    axs[1].pie(graf_paises_estrangeiros, labels=labels, shadow=True, startangle=90)
-    
-
+    axs[1].pie(graf_paises_estrangeiros, labels=labels1, shadow=True, startangle=90)
+    '''
     #####
-    #graf.plot.pie(labels=labels, ylabel='', shadow=True, startangle=90)
+    
+    graf_paises.plot.pie(ylabel='', shadow=True, startangle=90)
 
     plt.show() 
 
