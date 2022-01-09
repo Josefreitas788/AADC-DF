@@ -3,27 +3,22 @@ import matplotlib.pyplot as plt
 from IPython.display import display
 from cep_df import cep_df
 
-# Importando os dados
-# add o caminho dos dados 
 dados = pd.read_csv('D:\heloh\Documents\Faculdade\Covid_DF.csv', sep = ';')
 
-
 # Colunas Selecionadas
-colunas_selecionadas =  ['paciente_idade', 'paciente_enumsexobiologico', 'paciente_racacor_valor', 'paciente_endereco_nmmunicipio', 'paciente_endereco_nmpais', 'paciente_endereco_uf', 'paciente_nacionalidade_enumnacionalidade', 'estalecimento_nofantasia', 'vacina_grupoatendimento_nome', 'vacina_categoria_nome', 'vacina_descricao_dose', 'vacina_nome', 'paciente_endereco_cep']
+colunas_selecionadas =  ['paciente_idade', 'paciente_enumsexobiologico', 'paciente_racacor_valor', 'paciente_endereco_nmmunicipio', 'paciente_endereco_nmpais', 'paciente_endereco_uf', 'estalecimento_nofantasia', 'vacina_grupoatendimento_nome', 'vacina_categoria_nome', 'vacina_descricao_dose', 'vacina_nome', 'paciente_endereco_cep']
 
-# Excluir = paciente_nacionalidade_enumnacionalidade 
-
-# Novo Dataframe com as colunas selecionadas 
+# Novo Dataframe com as colunas selecionadas
 dados_vacina = dados.filter(items = colunas_selecionadas)
 
 # Idades inconsistentes foram substituidas pela média aritmética da coluna 'paciente_idade'
 dados_vacina.loc[dados_vacina['paciente_idade'].isnull()] = dados_vacina['paciente_idade'].mean()
 
-# Dados nulos das outras colunas foram substituidos por 'Não informado' 
+# Dados nulos das outras colunas foram substituidos por 'Não informado'
 dados_vacina.fillna("Não informado", inplace = True)
 
 # Soma de valores nulos em cada coluna
-print(dados_vacina.isnull().sum())
+#print(dados_vacina.isnull().sum())
 
 # Drop paciente_racacor_valor = 50.59404737212269]
 #print((dados_vacina['paciente_racacor_valor']).value_counts())
@@ -32,12 +27,13 @@ dados_vacina.drop(dados_vacina.loc[dados_vacina['paciente_racacor_valor'] == 50.
 
 #Alteração na UF do paciente
 dados_vacina.loc[dados_vacina['paciente_endereco_uf'] == 'XX'] = 'Não informado'
+#print(dados_vacina)
 
 # Exportando dados
-#dados_vacina.to_csv('dados_vacina.csv')
+#dados_vacina['paciente_idade'].to_csv('paciente_idade.csv')
 
+####################### Quantidade de pessoas que tomaram a 1°, 2° e 3° dose #######################
 
-# Quantidade de pessoas que tomaram a 1°, 2° e 3° dose
 def graf_quant_dose123():
 
     # Filtrando dados do DataFrame
@@ -55,8 +51,8 @@ def graf_quant_dose123():
     L = plt.legend( bbox_to_anchor=(1, 0, 0.5, 1), loc='center left', labels = labels)
     plt.show() 
 
+#######################Classificação por região geográfica.(estados do Brasil)#######################
 
-# Classificação por região geográfica.
 def graf_regiao_geografica_estados():
 
     # Filtrando dados do DataFrame
@@ -69,35 +65,31 @@ def graf_regiao_geografica_estados():
     graf.plot.bar(title = 'Localização geográfica das pessoas que se vacinaram no DF\n', xlabel= 'Estados', ylabel = 'Quantidade de pessoas')
     plt.show() 
 
-# Classificação por região geográfica.
+####################### Classificação por região geográfica. (paises) #######################
+
 def graf_regiao_geografica_paises():
 
+
     paises  = ['Brasil', 'Não informado', 'Ruanda' 'Venezuela' ,'Japão', 'Congo', 'Bolívia' , 'Portugal', 'São Tomé e Príncipe', 'Gibraltar', 'Colômbia', 'Andorra']
+
+    labels = 'Ruanda', 'Venezuela', 'Bolívia' ,  'Congo', 'Japão', 'Andorra','Colômbia', 'Gibraltar', 'Portugal', 'São Tomé e Príncipe'
 
     # Filtrando dados do DataFrame
     colunas = ['paciente_endereco_nmpais']
     regiao_geografica_paises = dados_vacina.filter(items=colunas)
 
     # Gráfico país do paciente 
-    # graf = (regiao_geografica_paises['paciente_endereco_nmpais'].value_counts())
-    graf = regiao_geografica_paises[(regiao_geografica_paises['paciente_endereco_nmpais'] != 'BRASIL') & (regiao_geografica_paises['paciente_endereco_nmpais'] != 'Não informado')].value_counts()
+    graf_paises = (regiao_geografica_paises['paciente_endereco_nmpais'].value_counts())
+    graf_paises_estrangeiros = regiao_geografica_paises[(regiao_geografica_paises['paciente_endereco_nmpais'] != 'BRASIL') & (regiao_geografica_paises['paciente_endereco_nmpais'] != 'Não informado')].value_counts()
 
-    tt = 'Ruanda', 'Venezuela', 'Bolívia' ,  'Congo', 'Japão', 'Andorra','Colômbia', 'Gibraltar', 'Portugal', 'São Tomé e Príncipe'
+    #####
+    fig, axs = plt.subplots(1,2)
+    axs[0].pie(graf_paises, shadow=True, startangle=90)
+    axs[1].pie(graf_paises_estrangeiros, labels=labels, shadow=True, startangle=90)
+    
 
-    '''
-    RUANDA                               4
-    VENEZUELA                            3
-    BOLIVIA                              2
-    CONGO, REPUBLICA DO (BRAZZAVILLE)    2
-    JAPAO                                2  
-    ANDORRA                              1
-    COLOMBIA                             1
-    GIBRALTAR                            1
-    PORTUGAL                             1
-    SAO TOME E PRINCIPE                  1
-    '''
-    print(graf)
-    graf.plot.pie(labels = tt)
+    #####
+    #graf.plot.pie(labels=labels, ylabel='', shadow=True, startangle=90)
 
     plt.show() 
 
@@ -119,9 +111,27 @@ def graf_regiao_geografica_df ():
 
     print(dados_regiao_geografica_df)
 
+def exportar_dados():
+    from pymongo import MongoClient
+
+    mongodb = MongoClient("mongodb+srv://Heloise:AmorDaMinhaVida@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+ 
+    # Banco de dados
+    db = mongodb.Cluster0
+    print(db.list_collection_names())
+
+    #collection
+    collection = db['dados_aadc']
+
+    dados_vacina.reset_index(inplace=True)
+    data_dict = dados_vacina.to_dict("records")
+    collection.insert_one({"index":"Sensex","data":data_dict})
+
+
 
 # Chamando as funções 
 #graf_quant_dose123()
 #graf_regiao_geografica_estados()
 #graf_regiao_geografica_df()
 graf_regiao_geografica_paises()
+#exportar_dados()
