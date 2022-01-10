@@ -90,7 +90,7 @@ def graf_regiao_geografica_paises():
     plt.show() 
 
 # Faixa etária das pessoas que tomaram a vacina.
-
+# Arrumar label
 def faixa_etaria():
 
   # Filtrando dados do DataFrame
@@ -107,15 +107,16 @@ def faixa_etaria():
 
     graf.plot.bar(ax=ax)
    
-    #ax.bar(graf)
-    #graf.plot.bar()
     ax.set_title('Blá blá blá')
 
     handles, labels = ax.get_legend_handles_labels()
-    print(labels)
-    new_labels = [re.search('\((.+?)\.', label).group(1) for label in labels]
-    print(new_labels)
-    ax.legend(new_labels)
+    new_labels = [re.search('\((.+?)', label) for label in labels]
+
+    #tt = ax.get_xlabel()
+    tt = ax.xaxis.get_label()
+    print(tt)
+    new_labels_2 = [re.search('\((.+?)', label) for label in tt]
+    ax.set_xlabel(new_labels_2)
 
     plt.show()
     
