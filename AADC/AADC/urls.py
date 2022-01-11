@@ -17,7 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
+#https://docs.djangoproject.com/en/4.0/topics/http/urls/
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name="home")
+    path('', views.faixa_etaria, name="faixa_etaria"),
+    path('', views.graf_quant_dose123, name="graf_quant_dose123")
 ]

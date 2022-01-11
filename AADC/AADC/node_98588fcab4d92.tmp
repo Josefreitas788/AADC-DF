@@ -1,10 +1,7 @@
 import pandas as pd 
 import matplotlib.pyplot as plt
 from IPython.display import display
-#from cep_df import cep_df
-import io 
-import urllib, base64
-from django.shortcuts import render
+from cep_df import cep_df
 
 dados = pd.read_csv('D:\heloh\Documents\Faculdade\Covid_DF.csv', sep = ';')
 
@@ -42,15 +39,14 @@ def graf_quant_dose123():
     # Filtrando dados do DataFrame
     colunas = ['vacina_descricao_dose']
     doses = dados_vacina.filter(items=colunas)
-    
+ 
     graf = doses.value_counts()
 
-    labels = ['1° Dose', '2° Dose', 'Dose única','Não informado' ]
+    labels = ['1° Dose', '2° Dose', 'Dose única']
     plt.style.use("ggplot")
-    explode = (0.1, 0.0, 0.0, 0.0)
-
-    labels1 = ['', '', '', '']
-    graf.plot.pie(autopct='%1.1f%%', shadow=True, startangle = 90, ylabel='', title = 'Porcentagem de pessoas que tomaram a 1° dose, 2° dose e a dose única.\n', subplots=True, labels = labels1,explode= explode ) 
+    explode = (0.1, 0.0, 0.0)
+    
+    graf.plot.pie(autopct='%1.1f%%', explode = explode, shadow=True, startangle = 90, ylabel='', title = 'Porcentagem de pessoas que tomaram a 1° dose, 2° dose e a dose única.\n', subplots=True, labels = ['', '', '']) 
 
     L = plt.legend( bbox_to_anchor=(1, 0, 0.5, 1), loc='center left', labels = labels)
     plt.show() 
@@ -93,42 +89,53 @@ def graf_regiao_geografica_paises():
     axs[1].pie(graf_paises_estrangeiros, labels=label, shadow=True, startangle=90)
     plt.show() 
 
-####################### Faixa etária das pessoas que tomaram a vacina. #######################
+# Faixa etária das pessoas que tomaram a vacina.
+# Arrumar label
 def faixa_etaria():
 
   # Filtrando dados do DataFrame
     colunas = ['paciente_idade']
     idade = dados_vacina.filter(items=colunas)
     #idade = dados_vacina['paciente_idade']
- 
-    # Alteração na idade  do paciente
-    idade.drop(idade.loc[idade['paciente_idade'] == 'Não informado'].index, inplace=True)
     
     # Criação do gráfico
-    graf = idade.value_counts()
-    graf.plot.bar() 
-    plt.show()
 
-
-####################### Classificação por vacina (Pfizer..) #######################
-def name_vacina():
-    # Filtrando dados do DataFrame
-    colunas = ['vacina_nome']
-    vacinas = dados_vacina['vacina_nome']
-
-    vacinas = vacinas.replace('Vacina Covid-19 - Covishield', 'Covishield')
-    vacinas = vacinas.replace('Covid-19-Coronavac-Sinovac/Butantan', 'Sinovac/Butantan')
-    vacinas = vacinas.replace('Vacina covid-19 - BNT162b2 - BioNTech/Fosun Pharma/Pfizer', 'Pfizer')
-    vacinas = vacinas.replace('Covid-19-AstraZeneca', 'AstraZeneca')
-    vacinas = vacinas.replace('Vacina covid-19 - Ad26.COV2.S - Janssen-Cilag', 'Janssen-Cilag')
-
-    # Gráfico
-    graf = vacinas.value_counts()
-    graf.plot.bar(title='Vacinas utilizadas x Quantidade')
-    print(graf)
-
+    idade.drop(idade.loc[idade['paciente_idade'] == 'Não informado'].index, inplace=True)
     
-###########################################Testes################################################
+    print(idade)
+    #Alteração na idade  do paciente
+ 
+   
+    #(39.0,)
+    #i[1: (len(str(i)) - 5 )]
+    for i in idade['paciente_idade']:
+        idade['paciente_idade'] = int(i)
+  
+ 
+   
+    #idade[pd.to_numeric(idade.paciente_idade, downcast='unsigned')]
+    
+    print(idade)
+
+    #fig, ax = plt.subplots() 
+    graf = idade.value_counts()
+
+    #graf.plot.bar(ax=ax)
+    graf.plot.bar() 2 
+    
+
+    '''
+    ax.set_title('Blá blá blá')
+
+    '''
+    plt.show()
+    
+
+
+
+
+
+###########################################################################################
 
 # Testes
 def graf_regiao_geografica_df ():
@@ -165,11 +172,7 @@ def exportar_dados():
 # Chamando as funções 
 #graf_quant_dose123()
 #graf_regiao_geografica_estados()
-#graf_regiao_geografica_paises()
-#faixa_etaria()
-#name_vacina()
-
-
 #graf_regiao_geografica_df()
+#graf_regiao_geografica_paises()
 #exportar_dados()
-
+faixa_etaria()
