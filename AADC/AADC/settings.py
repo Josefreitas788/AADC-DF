@@ -81,8 +81,8 @@ WSGI_APPLICATION = 'AADC.wsgi.application'
   #  }
 #}
 
-USERNAME = 'Heloise'
-PASSWORD = 'HELOISE'
+USERNAME = 'usuario'
+PASSWORD = 'senha'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
