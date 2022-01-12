@@ -81,8 +81,8 @@ WSGI_APPLICATION = 'AADC.wsgi.application'
   #  }
 #}
 
-USERNAME = 'usuario'
-PASSWORD = 'senha'
+USERNAME = 'Ninive'
+PASSWORD = 'Ninive'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',

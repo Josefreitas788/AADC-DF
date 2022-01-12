@@ -5,9 +5,10 @@ import matplotlib.pyplot as plt
 from IPython.display import display
 import io 
 import urllib, base64
+
 #from cep_df import cep_df
 
-dados = pd.read_csv('D:\heloh\Documents\Faculdade\Covid_DF.csv', sep = ';')
+dados = pd.read_csv("C:/Users/Ninive/Desktop/csv/Covid_DF.csv", sep = ';')
 
 # Colunas Selecionadas
 colunas_selecionadas =  ['paciente_idade', 'paciente_enumsexobiologico', 'paciente_racacor_valor', 'paciente_endereco_nmmunicipio', 'paciente_endereco_nmpais', 'paciente_endereco_uf', 'estalecimento_nofantasia', 'vacina_grupoatendimento_nome', 'vacina_categoria_nome', 'vacina_descricao_dose', 'vacina_nome', 'paciente_endereco_cep']
@@ -47,7 +48,7 @@ def graf_quant_dose123(request):
     graf.plot.pie(autopct='%1.1f%%', shadow=True, startangle = 90, ylabel='', title = 'Porcentagem de pessoas que tomaram a 1° dose, 2° dose e a dose única.\n', subplots=True, labels = labels1,explode= explode ) 
 
     L = plt.legend( bbox_to_anchor=(1, 0, 0.5, 1), loc='center left', labels = labels)
-    #plt.show() 
+    plt.show() 
 
     fig = plt.gcf()
     buf = io.BytesIO()
@@ -125,8 +126,8 @@ def faixa_etaria(request):
     idade.drop(idade.loc[idade['paciente_idade'] == 'Não informado'].index, inplace=True)
     
     # Criação do gráfico
-    graf = idade.value_counts()
-    graf.plot.bar() 
+    
+    idade.plot.hist(bins=30,color= 'green') 
 
     #Django
     fig = plt.gcf()

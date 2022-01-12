@@ -6,7 +6,7 @@ import io
 import urllib, base64
 from django.shortcuts import render
 
-dados = pd.read_csv('D:\heloh\Documents\Faculdade\Covid_DF.csv', sep = ';')
+dados = pd.read_csv("C:/Users/Ninive/Desktop/csv/Covid_DF.csv", sep = ';')
 
 # Colunas Selecionadas
 colunas_selecionadas =  ['paciente_idade', 'paciente_enumsexobiologico', 'paciente_racacor_valor', 'paciente_endereco_nmmunicipio', 'paciente_endereco_nmpais', 'paciente_endereco_uf', 'estalecimento_nofantasia', 'vacina_grupoatendimento_nome', 'vacina_categoria_nome', 'vacina_descricao_dose', 'vacina_nome', 'paciente_endereco_cep']
@@ -105,10 +105,9 @@ def faixa_etaria():
     idade.drop(idade.loc[idade['paciente_idade'] == 'Não informado'].index, inplace=True)
     
     # Criação do gráfico
-    graf = idade.value_counts()
-    graf.plot.bar() 
+   
+    idade.plot.hist(bins=30, color= 'green')
     plt.show()
-
 
 ####################### Classificação por vacina (Pfizer..) #######################
 def name_vacina():
