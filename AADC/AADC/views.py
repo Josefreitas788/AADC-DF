@@ -3,12 +3,19 @@ from django.http import HttpResponse
 import pandas as pd 
 import matplotlib.pyplot as plt
 from IPython.display import display
-import io 
+import io, os
 import urllib, base64
+import gdown
 
 #from cep_df import cep_df
 
-dados = pd.read_csv("C:/Users/Ninive/Desktop/csv/Covid_DF.csv", sep = ';')
+# Checa se existe os dados em .csv
+arquivo_csv = "AADC/csv/Covid_DF.csv"
+if not os.path.isfile(arquivo_csv):
+    os.makedirs("AADC/csv", exist_ok=True)
+    gdown.download("https://drive.google.com/u/0/uc?id=1vKiEsNMtWXLhK9h9Og2VpzXEonQOIfas", arquivo_csv, quiet=False)
+
+dados = pd.read_csv(arquivo_csv, sep = ';')
 
 # Colunas Selecionadas
 colunas_selecionadas =  ['paciente_idade', 'paciente_enumsexobiologico', 'paciente_racacor_valor', 'paciente_endereco_nmmunicipio', 'paciente_endereco_nmpais', 'paciente_endereco_uf', 'estalecimento_nofantasia', 'vacina_grupoatendimento_nome', 'vacina_categoria_nome', 'vacina_descricao_dose', 'vacina_nome', 'paciente_endereco_cep']
