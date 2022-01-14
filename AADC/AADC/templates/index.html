@@ -12,11 +12,21 @@
         <a href="#">Início</a>
     </div>
 </head>
+
 <body>
+<table>
+    <tbody>
+        {%for graphic in Graphic_list %}
+        <tr>
+            <img src="data:image/png;base64,{{ graphic.ImageGraphic}}" alt="" height="480", width="480">
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
     <svg role="img" height="120">
         <use xlink:href="img/logo.svg"/>
     </svg>
-    <img src="data:image/png;base64,{{data}}" alt="" height="480", width="480">
+    <img src="data:image/png;base64,{{ graphic.ImageGraphic}}" alt="" height="480", width="480">
     <img src="data:image/png;base64,{{data}}" alt="" height="450", width="450">
 </body>
 </html>

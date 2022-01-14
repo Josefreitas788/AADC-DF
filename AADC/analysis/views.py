@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
-from . import graph
+#from . import graph
+
 
 def Graphic_list(request): 
   # Primeiro, buscamos os funcionarios 
-  graphic = Graphic.objetos.all() 
+  Graphic = Graphic.objetos.all() 
  
   # Incluímos no contexto 
   contexto = { 
@@ -17,4 +18,5 @@ def Graphic_list(request):
     "templates/index.html",  
     contexto 
   )
+
 

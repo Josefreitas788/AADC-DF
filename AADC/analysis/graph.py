@@ -1,12 +1,16 @@
+from django.shortcuts import render
+from django.http import HttpResponse
 import pandas as pd 
 import matplotlib.pyplot as plt
 from IPython.display import display
-#from cep_df import cep_df
-import io 
-import os
+import io, os
 import urllib, base64
-from django.shortcuts import render
+import gdown
+from analysis.models import Graphic
 
+#from cep_df import cep_df
+
+# Checa se existe os dados em .csv
 arquivo_csv = "AADC/csv/Covid_DF.csv"
 if not os.path.isfile(arquivo_csv):
     os.makedirs("AADC/csv", exist_ok=True)
@@ -30,25 +34,18 @@ dados_vacina.fillna("Não informado", inplace = True)
 #print(dados_vacina.isnull().sum())
 
 # Drop paciente_racacor_valor = 50.59404737212269]
-#print((dados_vacina['paciente_racacor_valor']).value_counts())
-#print(dados_vacina.loc[dados_vacina['paciente_racacor_valor'] == 50.59404737212269] )
 dados_vacina.drop(dados_vacina.loc[dados_vacina['paciente_racacor_valor'] == 50.59404737212269].index, inplace=True)
 
 #Alteração na UF do paciente
 dados_vacina.loc[dados_vacina['paciente_endereco_uf'] == 'XX'] = 'Não informado'
-#print(dados_vacina)
-
-# Exportando dados
-#dados_vacina['paciente_idade'].to_csv('paciente_idade.csv')
 
 ####################### Quantidade de pessoas que tomaram a 1°, 2° e 3° dose #######################
 
 def graf_quant_dose123():
-
     # Filtrando dados do DataFrame
     colunas = ['vacina_descricao_dose']
     doses = dados_vacina.filter(items=colunas)
-    
+ 
     graf = doses.value_counts()
 
     labels = ['1° Dose', '2° Dose', 'Dose única','Não informado' ]
@@ -61,6 +58,14 @@ def graf_quant_dose123():
     L = plt.legend( bbox_to_anchor=(1, 0, 0.5, 1), loc='center left', labels = labels)
     plt.show() 
 
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format = 'png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return uri
+
 #######################Classificação por região geográfica.(estados do Brasil)#######################
 
 def graf_regiao_geografica_estados():
@@ -72,8 +77,17 @@ def graf_regiao_geografica_estados():
     # Gráfico UF do paciente 
     graf = (dados_regiao_geografica['paciente_endereco_uf'].value_counts())
 
-    graf = graf.plot.bar(title = 'Localização geográfica das pessoas que se vacinaram no DF\n', xlabel= 'Estados', ylabel = 'Quantidade de pessoas')
-    plt.show() 
+    graf.plot.bar(title = 'Localização geográfica das pessoas que se vacinaram no DF\n', xlabel= 'Estados', ylabel = 'Quantidade de pessoas')
+    #plt.show() 
+
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format = 'png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return uri
+
 
 ####################### Classificação por região geográfica. (paises) #######################
 
@@ -97,9 +111,18 @@ def graf_regiao_geografica_paises():
     axs[0].pie(graf_paises, shadow=True, startangle=90)
     axs[1].set_title('Países estrangeiros')
     axs[1].pie(graf_paises_estrangeiros, labels=label, shadow=True, startangle=90)
-    plt.show() 
+  
+    #Django
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format = 'png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return uri
 
 ####################### Faixa etária das pessoas que tomaram a vacina. #######################
+
 def faixa_etaria():
 
   # Filtrando dados do DataFrame
@@ -111,9 +134,17 @@ def faixa_etaria():
     idade.drop(idade.loc[idade['paciente_idade'] == 'Não informado'].index, inplace=True)
     
     # Criação do gráfico
-   
-    idade.plot.hist(bins=30, color= 'green')
-    plt.show()
+    
+    idade.plot.hist(bins=30,color= 'green') 
+
+    #Django
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format = 'png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return uri    
 
 ####################### Classificação por vacina (Pfizer..) #######################
 def name_vacina():
@@ -129,53 +160,31 @@ def name_vacina():
 
     # Gráfico
     graf = vacinas.value_counts()
-    return graf.plot.bar(title='Vacinas utilizadas x Quantidade')
-    
+    graf.plot.bar(title='Vacinas utilizadas x Quantidade')
+    print(graf)
 
-    
-###########################################Testes################################################
-
-# Testes
-def graf_regiao_geografica_df ():
-    # Filtrando dados do DataFrame
-    colunas = ['paciente_endereco_cep', 'paciente_endereco_nmmunicipio', 'paciente_endereco_uf']
-    dados_regiao_geografica_df = dados_vacina.filter(items=colunas)
-
-    dados_regiao_geografica_df = dados_regiao_geografica_df[dados_regiao_geografica_df.paciente_endereco_uf == 'DF']
-
-    #chamando a função cep_df para obter a RA
-    dados_regiao_geografica_df['RA'] = [cep_df(cep) for cep in dados_regiao_geografica_df.paciente_endereco_cep]
-
-    print(dados_regiao_geografica_df)
-
-# Conexão com o banco de dados 
-def exportar_dados():
-    from pymongo import MongoClient
-
-    USERNAME = 'Ninive'
-    PASSWORD = 'Ninive'
-    mongodb = MongoClient("mongodb+srv://{USERNAME}:{PASSWORD}@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
- 
-    # Banco de dados
-    db = mongodb.Cluster0
-    print(db.list_collection_names())
-
-    #collection
-    collection = db['dados_aadc']
-
-    dados_vacina.reset_index(inplace=True)
-    data_dict = dados_vacina.to_dict("records")
-    collection.insert_one({"index":"Sensex","data":data_dict})
+    #Django
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format = 'png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return uri
 
 
 
 # Chamando as funções 
-#Quantidade_doses = Grafic(imageGraphic = graf_quant_dose123())
-#Região_geografica_estados = Grafic(imageGraphic = graf_regiao_geografica_estados())
-#Região_geografica_paises = Grafic(imageGraphic = graf_regiao_geografica_paises())
-#Faixa_Etaria = Grafic(imageGraphic = faixa_etaria())
-#Nome_vacina = Grafic(imageGraphic = name_vacina())
-
+Quantidade_doses = Graphic(imageGraphic = graf_quant_dose123())
+Quantidade_doses.save()
+Região_geografica_estados = Graphic(imageGraphic = graf_regiao_geografica_estados())
+Região_geografica_estados.save()
+Região_geografica_paises = Graphic(imageGraphic = graf_regiao_geografica_paises())
+Região_geografica_paises.save()
+Faixa_Etaria = Graphic(imageGraphic = faixa_etaria())
+Faixa_Etaria.save()
+Nome_vacina = Graphic(imageGraphic = name_vacina())
+Nome_vacina.save()
 
 
 
