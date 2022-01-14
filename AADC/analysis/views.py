@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 
-# Create your views here.
+
 def Graphic_list(request): 
   # Primeiro, buscamos os funcionarios 
   graphic = Graphic.objetos.all() 
@@ -18,3 +18,4 @@ def Graphic_list(request):
     "templates/index.html",  
     contexto 
   )
+

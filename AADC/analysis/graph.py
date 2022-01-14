@@ -72,7 +72,7 @@ def graf_regiao_geografica_estados():
     # Gráfico UF do paciente 
     graf = (dados_regiao_geografica['paciente_endereco_uf'].value_counts())
 
-    graf.plot.bar(title = 'Localização geográfica das pessoas que se vacinaram no DF\n', xlabel= 'Estados', ylabel = 'Quantidade de pessoas')
+    graf = graf.plot.bar(title = 'Localização geográfica das pessoas que se vacinaram no DF\n', xlabel= 'Estados', ylabel = 'Quantidade de pessoas')
     plt.show() 
 
 ####################### Classificação por região geográfica. (paises) #######################
@@ -152,7 +152,9 @@ def graf_regiao_geografica_df ():
 def exportar_dados():
     from pymongo import MongoClient
 
-    mongodb = MongoClient("mongodb+srv://Heloise:AmorDaMinhaVida@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    USERNAME = 'Ninive'
+    PASSWORD = 'Ninive'
+    mongodb = MongoClient("mongodb+srv://{USERNAME}:{PASSWORD}@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
  
     # Banco de dados
     db = mongodb.Cluster0

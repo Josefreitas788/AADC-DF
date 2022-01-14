@@ -150,8 +150,9 @@ def graf_regiao_geografica_df ():
 # Conexão com o banco de dados 
 def exportar_dados():
     from pymongo import MongoClient
-
-    mongodb = MongoClient("mongodb+srv://Heloise:AmorDaMinhaVida@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    USERNAME = 'Ninive'
+    PASSWORD = 'Ninive'
+    mongodb = MongoClient("mongodb+srv://{USERNAME}:{PASSWORD}@cluster0.kvg8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
  
     # Banco de dados
     db = mongodb.Cluster0
