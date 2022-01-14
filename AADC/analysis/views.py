@@ -1,22 +1,13 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic import ListView
+from analysis.models import Graphic
 #from . import graph
 
+class Graphic_list(ListView):
 
-def Graphic_list(request): 
-  # Primeiro, buscamos os funcionarios 
-  Graphic = Graphic.objetos.all() 
- 
-  # Incluímos no contexto 
-  contexto = { 
-    'Graphic': Graphic 
-  } 
- 
-  # Retornamos o template para listar os funcionários 
-  return render( 
-    request,  
-    "templates/index.html",  
-    contexto 
-  )
+    template_name = "templates/index.html" 
+    model = Graphic 
+    context_object_name = "Graphic"
+
 
 
