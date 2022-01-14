@@ -1,9 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
-import graph
-
-
-
+from . import graph
 
 def Graphic_list(request): 
   # Primeiro, buscamos os funcionarios 

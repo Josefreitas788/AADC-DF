@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 from IPython.display import display
 #from cep_df import cep_df
 import io 
+import os
 import urllib, base64
 from django.shortcuts import render
-from AADC.models import Graphic
 
 arquivo_csv = "AADC/csv/Covid_DF.csv"
 if not os.path.isfile(arquivo_csv):
