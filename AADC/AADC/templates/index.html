@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AADC - Aplicação para Análise de Dados do Covid-19 no DF</title>
+    <link rel="stylesheet" href="css/style.css">
+    <div class="menu-principal">
+        <object type="image/svg+xml" data="img/logo.svg" class="menu-logo" height="50"></object>
+        <a href="#">Sobre</a>
+        <a href="#">Início</a>
+    </div>
 </head>
 <body>
-    <h1><center>Gráficos sobre a Vacinação no DF</center></h1>
-    <img src="data:image/png;base64,{{ data}}" alt="" height="480", width="480">
+    <svg role="img" height="120">
+        <use xlink:href="img/logo.svg"/>
+    </svg>
+    <img src="data:image/png;base64,{{data}}" alt="" height="480", width="480">
+    <img src="data:image/png;base64,{{data}}" alt="" height="450", width="450">
 </body>
 </html>
