@@ -1,9 +1,11 @@
 from . import views 
- 
+from django.urls import path
+from django.views.generic import TemplateView 
+
 app_name = 'analysis' 
  
 # urlpatterns contém a lista de roteamentos de URLs 
 urlpatterns = [ 
   # GET / 
-  path('', views.index, name='index'), 
+  path('', TemplateView.as_view(template_name="index.html"))
 ] 
