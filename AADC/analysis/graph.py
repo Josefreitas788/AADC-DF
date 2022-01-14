@@ -129,7 +129,7 @@ def name_vacina():
 
     # Gráfico
     graf = vacinas.value_counts()
-    graf.plot.bar(title='Vacinas utilizadas x Quantidade')
+    return graf.plot.bar(title='Vacinas utilizadas x Quantidade')
     
 
     
@@ -170,11 +170,14 @@ def exportar_dados():
 
 
 # Chamando as funções 
-#graf_quant_dose123()
-#graf_regiao_geografica_estados()
-#graf_regiao_geografica_paises()
-#faixa_etaria()
-name_vacina()
+#Quantidade_doses = Grafic(imageGraphic = graf_quant_dose123())
+#Região_geografica_estados = Grafic(imageGraphic = graf_regiao_geografica_estados())
+#Região_geografica_paises = Grafic(imageGraphic = graf_regiao_geografica_paises())
+#Faixa_Etaria = Grafic(imageGraphic = faixa_etaria())
+#Nome_vacina = Grafic(imageGraphic = name_vacina())
+
+
+
 
 
 #graf_regiao_geografica_df()
