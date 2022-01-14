@@ -5,6 +5,7 @@ from IPython.display import display
 import io 
 import urllib, base64
 from django.shortcuts import render
+from AADC.models import Graphic
 
 arquivo_csv = "AADC/csv/Covid_DF.csv"
 if not os.path.isfile(arquivo_csv):
@@ -176,4 +177,3 @@ name_vacina()
 
 #graf_regiao_geografica_df()
 #exportar_dados()
-
