@@ -9,7 +9,7 @@ body {
 
 /* Adiciona uma cor de fundo ao menu principal */
 .menu-principal {
-    background-color: rgb(98, 114, 255);
+    background-color: rgb(45, 84, 255);
     overflow: hidden;
     height: 50px;
     width: 100%;
@@ -32,9 +32,17 @@ body {
     fill: #fff;
 }
 
+.menu-titulo {
+    display: inline-block !important;
+    font-family: sans-serif;
+    padding-top: 8px;
+    color: #fff;
+    vertical-align: top;
+}
+
 /* Change the color of links on hover */
 .menu-principal a:hover {
-    background-color: #ddd;
+    background-color: rgb(255, 255, 255);
     color: black;
 }
 
