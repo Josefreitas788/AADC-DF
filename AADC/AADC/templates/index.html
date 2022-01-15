@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AADC - Aplicação para Análise de Dados do Covid-19 no DF</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{%static 'css/style.css' %}">
     <div class="menu-principal">
-        <object type="image/svg+xml" data="img/logo.svg" class="menu-logo" height="50"></object>
+        <object type="image/svg+xml" data="{%static 'img/logo.svg' %}" class="menu-logo" height="50"></object>
         <b class="menu-titulo">
         APLICAÇÃO PARA ANÁLISE DE<br>
         DADOS DE COVID-19 NO DF
