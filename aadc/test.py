@@ -2,7 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from IPython.display import display
 #from cep_df import cep_df
-import io 
+import io, os
+import gdown
 import urllib, base64
 from django.shortcuts import render
 
