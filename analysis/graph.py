@@ -174,6 +174,86 @@ def name_vacina():
 
 
 
+####################### Classificação por Etnia #######################
+def vacina_etnia():
+    #Filtrando as colunas
+    dados_limpos = dados[ dados['paciente_racacor_valor'] == 'SEM INFORMACAO' ].index
+    dados.drop(dados_limpos , inplace=True)
+    graf = (dados['paciente_racacor_valor'].value_counts())
+    #Criando o grafico
+    graf.plot.bar(title = 'Etnia\n',xlabel= 'Vacinas', ylabel = 'Frequência', color= "ORANGE")
+
+    #Django
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format = 'png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return uri    
+####################### Classificação por Grupo de vacinados #######################
+
+def vacina_categoria():
+    #Filtrando as colunas
+    graf = (dados['vacina_categoria_nome'].value_counts())
+    #Criando o grafico
+    graf.plot.bar(title = 'Categorias mais vacinadas no DF\n', xlabel= 'Vacinas', ylabel = 'Frequência', color = "green")
+
+    #Django
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format = 'png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return uri    
+####################### Classificação por genero biologico #######################
+
+def vacina_genero_biologico():
+    #Fltrando coluna
+    graf = (dados['paciente_enumsexobiologico'].value_counts())
+    #Criando o grafico
+    graf.plot.pie(title = 'Gênero que mais se vacinou no  DF\n', autopct='%1.1f%%',xlabel= 'Vacinas', ylabel = 'Porcentagem')
+
+    #Django
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format = 'png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return uri    
+####################### Classificação por UF dos vacinados #######################
+def uf_dos_vacinados():
+    #Fltrando coluna
+    graf = (dados['paciente_endereco_uf'].value_counts())
+    #Criando o grafico
+    graf.plot.bar(title = 'UF dos pacientes que foram vacinados no DF\n', xlabel= 'Vacinas', ylabel = 'Frequência', color = "Yellow")
+
+    #Django
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format = 'png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return uri    
+####################### Classificação das doses ja tomadas #######################
+def dose_tomada():
+    #Filtrando as colunas
+    graf = (dados['vacina_descricao_dose'].value_counts())
+    #Criando os graficos
+    graf.plot.barh(title = 'Quantidade das doses já tomadas DF\n', xlabel= 'Vacinas', ylabel = 'Frequência', color="purple")
+
+    #Django
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format = 'png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return uri  
+
 # Chamando as funções 
 Quantidade_doses = Graphic(imageGraphic = graf_quant_dose123())
 Quantidade_doses.save()
@@ -185,6 +265,18 @@ Faixa_Etaria = Graphic(imageGraphic = faixa_etaria())
 Faixa_Etaria.save()
 Nome_vacina = Graphic(imageGraphic = name_vacina())
 Nome_vacina.save()
+Vacina_etnia = Graphic(imageGraphic = vacina_etnia())
+Vacina_etnia.save()
+Vacina_Categoria = Graphic(imageGraphic = vacina_categoria())
+Vacina_Categoria.save()
+Vacina_Genero = Graphic(imageGraphic = vacina_genero_biologico())
+Vacina_Genero.save()
+Uf_Vacinados = Graphic(imageGraphic = uf_dos_vacinados())
+Uf_Vacinados.save()
+Dose_Tomada = Graphic(imageGraphic = dose_tomada())
+Dose_Tomada.save()
+
+
 
 
 
