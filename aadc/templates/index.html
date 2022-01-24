@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AADC - Aplicação para Análise de Dados do Covid-19 no DF</title>
+
     <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <div class="menu-principal">
         <object type="image/svg+xml" data="{%static 'img/logo.svg' %}" class="menu-logo" height="50"></object>
         <b class="menu-titulo">
@@ -19,20 +22,41 @@
 </head>
 
 <body>
-<table>
+<div class="main-window">
+<section class="main-window-menu">
+    <div>
+        <a href="#">Doses</a>
+    </div>
+    <div>
+        <a href="#">Estados</a>
+    </div>
+    <div>
+        <a href="#">Paises</a>
+    </div>
+    <div>
+        <a href="#">Faixa Etária</a>
+    </div>
+    <div>
+        <a href="#">Vacina</a>
+    </div>
+</section>
+<table class="main-window-item">
     <tbody>
         {%for graphic in graphics %}
         <tr>
-            <td>{{ graphic }}</td>
-            <img  class="img-responsive watch-right" alt="" src="{{graphic.ImageGraphic}}"/>
-            <img src="image/png;base64,{{ graphic.ImageGraphic }}" alt="" height="480", width="480">
+            <!--<td>{{ graphic }}</td>-->
+            <img src="data:image/png;base64, {{graphic}}" alt="" height="550", width="700">
         </tr>
         {% endfor %}
     </tbody>
 </table>
-    <svg role="img" height="120">
-        <use xlink:href="img/logo.svg"/>
-    </svg>
-
+<section>
+    <div class="info-total">
+        <h1>Total de casos: {{ total_cases }}</h1>
+        <h1>Total de mortes: {{ total_deaths }}</h1>
+        <h1>Total de recuperados: {{ total_recovered }}</h1>
+    </div>
+</section>
+</div>
 </body>
 </html>

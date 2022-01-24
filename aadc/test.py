@@ -7,9 +7,9 @@ import gdown
 import urllib, base64
 from django.shortcuts import render
 
-arquivo_csv = "csv/Covid_DF.csv"
+arquivo_csv = "aadc/csv/Covid_DF.csv"
 if not os.path.isfile(arquivo_csv):
-    os.makedirs("csv", exist_ok=True)
+    os.makedirs("aadc/csv", exist_ok=True)
     gdown.download("https://drive.google.com/u/0/uc?id=1vKiEsNMtWXLhK9h9Og2VpzXEonQOIfas", arquivo_csv, quiet=False)
 
 dados = pd.read_csv(arquivo_csv, sep = ';')
