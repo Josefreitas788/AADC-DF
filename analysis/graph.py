@@ -56,7 +56,7 @@ def graf_quant_dose123():
     graf.plot.pie(autopct='%1.1f%%', shadow=True, startangle = 90, ylabel='', title = 'Porcentagem de pessoas que tomaram a 1° dose, 2° dose e a dose única.\n', subplots=True, labels = labels1,explode= explode ) 
 
     L = plt.legend( bbox_to_anchor=(1, 0, 0.5, 1), loc='center left', labels = labels)
-    plt.show() 
+    #plt.show() 
 
     fig = plt.gcf()
     buf = io.BytesIO()
@@ -161,7 +161,7 @@ def name_vacina():
     # Gráfico
     graf = vacinas.value_counts()
     graf.plot.bar(title='Vacinas utilizadas x Quantidade')
-    print(graf)
+    #print(graf)
 
     #Django
     fig = plt.gcf()
