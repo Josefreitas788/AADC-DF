@@ -11,9 +11,9 @@ from analysis.models import Graphic
 #from cep_df import cep_df
 
 # Checa se existe os dados em .csv
-arquivo_csv = "AADC/csv/Covid_DF.csv"
+arquivo_csv = "aadc/csv/Covid_DF.csv"
 if not os.path.isfile(arquivo_csv):
-    os.makedirs("AADC/csv", exist_ok=True)
+    os.makedirs("aadc/csv", exist_ok=True)
     gdown.download("https://drive.google.com/u/0/uc?id=1vKiEsNMtWXLhK9h9Og2VpzXEonQOIfas", arquivo_csv, quiet=False)
 
 dados = pd.read_csv(arquivo_csv, sep = ';')

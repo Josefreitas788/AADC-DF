@@ -45,16 +45,19 @@
         {%for graphic in graphics %}
         <tr>
             <!--<td>{{ graphic }}</td>-->
-            <img src="data:image/png;base64, {{graphic}}" alt="" height="550", width="700">
+            <img class="{{ graphic_id }}" src="data:image/png;base64, {{graphic}}" alt="" height="550", width="700">
         </tr>
         {% endfor %}
     </tbody>
 </table>
 <section>
     <div class="info-total">
-        <h1>Total de casos: {{ total_cases }}</h1>
-        <h1>Total de mortes: {{ total_deaths }}</h1>
-        <h1>Total de recuperados: {{ total_recovered }}</h1>
+        <h2>Total de casos:</h2>
+        <h1 style="color: rgb(0, 0, 90); font-size:50px; margin: 1px;">{{ total_cases }}</h1>
+        <h2>Total de mortes:</h2>
+        <h1 style="color: rgb(0, 0, 90); font-size:50px; margin: 1px;">{{ total_deaths }}</h1>
+        <h2>Total de recuperados:</h2>
+        <h1 style="color: rgb(0, 0, 90); font-size:50px; margin: 1px;">{{ total_recovered }}</h1>
     </div>
 </section>
 </div>

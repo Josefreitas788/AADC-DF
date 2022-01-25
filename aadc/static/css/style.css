@@ -5,6 +5,7 @@
 body {
     margin: 0px;
     font-family: 'segoe ui';
+    background-color: #fcfcfc;
 }
 
 img {
@@ -13,7 +14,7 @@ img {
 
 .main-window {
     border-radius: 20px;
-    background-color: #eee7e7;
+    background-color: rgb(211, 226, 226);
     padding: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -26,10 +27,12 @@ img {
 
 .info-total {
     border-radius: 20px;
-    background-color: #dac2c2;
+    background-color: #719eff;
     padding: 10px;
     font-family: sans-serif;
     text-align: center;
+    margin-left: 8px;
+    color: white;
 }
 
 .main-window-menu {
@@ -44,11 +47,18 @@ img {
     margin-bottom: 0.5em;
     word-wrap: normal;
     display: inline-block;
+    width: 200px;
     text-decoration: none;
     font-size: 17px;
     font-family: Arial, Helvetica, sans-serif;
+    color:rgb(255, 255, 255);
     border-radius: 20px;
-    background-color: #dac2c2;
+    background-color: #719eff;
+}
+
+.main-window-menu a:hover {
+    background-color: #fcfcfc;
+    color: #000000;
 }
 
 /* Adiciona uma cor de fundo ao menu principal */
