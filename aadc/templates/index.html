@@ -45,7 +45,7 @@
         {%for graphic in graphics %}
         <tr>
             <!--<td>{{ graphic }}</td>-->
-            <img class="{{ graphic_id }}" src="data:image/png;base64, {{graphic}}" alt="" height="550", width="700">
+            <img class="{{ graphic_id }}" src="{%static graphic %}" alt="" height="550", width="700">
         </tr>
         {% endfor %}
     </tbody>

@@ -41,7 +41,13 @@ dados_vacina.loc[dados_vacina['paciente_endereco_uf'] == 'XX'] = 'Não informado
 
 ####################### Quantidade de pessoas que tomaram a 1°, 2° e 3° dose #######################
 
-def graf_quant_dose123():
+def save_graph(name, buf):
+    if not os.path.isfile(name):
+        f = open(f"aadc/static/img/{name}.png", "wb")
+        f.write(buf)
+        f.close()
+
+def graf_quant_dose123(name):
     # Filtrando dados do DataFrame
     colunas = ['vacina_descricao_dose']
     doses = dados_vacina.filter(items=colunas)
@@ -62,13 +68,14 @@ def graf_quant_dose123():
     buf = io.BytesIO()
     fig.savefig(buf, format = 'png')
     buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri = urllib.parse.quote(string)
-    return uri
+    save_graph(name, buf.read())
+    #string = base64.b64encode(buf.read())
+    #uri = urllib.parse.quote(string)
+    #return uri
 
 #######################Classificação por região geográfica.(estados do Brasil)#######################
 
-def graf_regiao_geografica_estados():
+def graf_regiao_geografica_estados(name):
 
     # Filtrando dados do DataFrame
     colunas = ['paciente_endereco_uf']
@@ -84,14 +91,15 @@ def graf_regiao_geografica_estados():
     buf = io.BytesIO()
     fig.savefig(buf, format = 'png')
     buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri = urllib.parse.quote(string)
-    return uri
+    save_graph(name, buf.read())
+    #string = base64.b64encode(buf.read())
+    #uri = urllib.parse.quote(string)
+    #return uri
 
 
 ####################### Classificação por região geográfica. (paises) #######################
 
-def graf_regiao_geografica_paises():
+def graf_regiao_geografica_paises(name):
 
     label = 'Ruanda', 'Venezuela', 'Bolívia' ,  'Congo', 'Japão', 'Andorra','Colômbia', 'Gibraltar', 'Portugal', 'São Tomé e Príncipe'
 
@@ -117,13 +125,14 @@ def graf_regiao_geografica_paises():
     buf = io.BytesIO()
     fig.savefig(buf, format = 'png')
     buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri = urllib.parse.quote(string)
-    return uri
+    save_graph(name, buf.read())
+    #string = base64.b64encode(buf.read())
+    #uri = urllib.parse.quote(string)
+    #return uri
 
 ####################### Faixa etária das pessoas que tomaram a vacina. #######################
 
-def faixa_etaria():
+def faixa_etaria(name):
 
   # Filtrando dados do DataFrame
     colunas = ['paciente_idade']
@@ -142,12 +151,13 @@ def faixa_etaria():
     buf = io.BytesIO()
     fig.savefig(buf, format = 'png')
     buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri = urllib.parse.quote(string)
-    return uri    
+    save_graph(name, buf.read())
+    #string = base64.b64encode(buf.read())
+    #uri = urllib.parse.quote(string)
+    #return uri    
 
 ####################### Classificação por vacina (Pfizer..) #######################
-def name_vacina():
+def name_vacina(name):
     # Filtrando dados do DataFrame
     colunas = ['vacina_nome']
     vacinas = dados_vacina['vacina_nome']
@@ -168,14 +178,15 @@ def name_vacina():
     buf = io.BytesIO()
     fig.savefig(buf, format = 'png')
     buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri = urllib.parse.quote(string)
-    return uri
+    save_graph(name, buf.read())
+    #string = base64.b64encode(buf.read())
+    #uri = urllib.parse.quote(string)
+    #return uri
 
 
 
 ####################### Classificação por Etnia #######################
-def vacina_etnia():
+def vacina_etnia(name):
     #Filtrando as colunas
     dados_limpos = dados[ dados['paciente_racacor_valor'] == 'SEM INFORMACAO' ].index
     dados.drop(dados_limpos , inplace=True)
@@ -188,12 +199,13 @@ def vacina_etnia():
     buf = io.BytesIO()
     fig.savefig(buf, format = 'png')
     buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri = urllib.parse.quote(string)
-    return uri    
+    save_graph(name, buf.read())
+    #string = base64.b64encode(buf.read())
+    #uri = urllib.parse.quote(string)
+    #return uri    
 ####################### Classificação por Grupo de vacinados #######################
 
-def vacina_categoria():
+def vacina_categoria(name):
     #Filtrando as colunas
     graf = (dados['vacina_categoria_nome'].value_counts())
     #Criando o grafico
@@ -204,12 +216,13 @@ def vacina_categoria():
     buf = io.BytesIO()
     fig.savefig(buf, format = 'png')
     buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri = urllib.parse.quote(string)
-    return uri    
+    save_graph(name, buf.read())
+    #string = base64.b64encode(buf.read())
+    #uri = urllib.parse.quote(string)
+    #return uri    
 ####################### Classificação por genero biologico #######################
 
-def vacina_genero_biologico():
+def vacina_genero_biologico(name):
     #Fltrando coluna
     graf = (dados['paciente_enumsexobiologico'].value_counts())
     #Criando o grafico
@@ -220,11 +233,12 @@ def vacina_genero_biologico():
     buf = io.BytesIO()
     fig.savefig(buf, format = 'png')
     buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri = urllib.parse.quote(string)
-    return uri    
+    save_graph(name, buf.read())
+    #string = base64.b64encode(buf.read())
+    #uri = urllib.parse.quote(string)
+    #return uri    
 ####################### Classificação por UF dos vacinados #######################
-def uf_dos_vacinados():
+def uf_dos_vacinados(name):
     #Fltrando coluna
     graf = (dados['paciente_endereco_uf'].value_counts())
     #Criando o grafico
@@ -235,11 +249,12 @@ def uf_dos_vacinados():
     buf = io.BytesIO()
     fig.savefig(buf, format = 'png')
     buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri = urllib.parse.quote(string)
-    return uri    
+    save_graph(name, buf.read())
+    #string = base64.b64encode(buf.read())
+    #uri = urllib.parse.quote(string)
+    #return uri    
 ####################### Classificação das doses ja tomadas #######################
-def dose_tomada():
+def dose_tomada(name):
     #Filtrando as colunas
     graf = (dados['vacina_descricao_dose'].value_counts())
     #Criando os graficos
@@ -250,30 +265,31 @@ def dose_tomada():
     buf = io.BytesIO()
     fig.savefig(buf, format = 'png')
     buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri = urllib.parse.quote(string)
-    return uri  
+    save_graph(name, buf.read())
+    #string = base64.b64encode(buf.read())
+    #uri = urllib.parse.quote(string)
+    #return uri  
 
 # Chamando as funções 
-Quantidade_doses = Graphic(imageGraphic = graf_quant_dose123())
+Quantidade_doses = Graphic(imageGraphic = graf_quant_dose123("graf_quant_dose"))
 Quantidade_doses.save()
-Região_geografica_estados = Graphic(imageGraphic = graf_regiao_geografica_estados())
+Região_geografica_estados = Graphic(imageGraphic = graf_regiao_geografica_estados("graf_estados"))
 Região_geografica_estados.save()
-Região_geografica_paises = Graphic(imageGraphic = graf_regiao_geografica_paises())
+Região_geografica_paises = Graphic(imageGraphic = graf_regiao_geografica_paises("graf_paises"))
 Região_geografica_paises.save()
-Faixa_Etaria = Graphic(imageGraphic = faixa_etaria())
+Faixa_Etaria = Graphic(imageGraphic = faixa_etaria("graf_faixa_etaria"))
 Faixa_Etaria.save()
-Nome_vacina = Graphic(imageGraphic = name_vacina())
+Nome_vacina = Graphic(imageGraphic = name_vacina("graf_nome_vacina"))
 Nome_vacina.save()
-Vacina_etnia = Graphic(imageGraphic = vacina_etnia())
+Vacina_etnia = Graphic(imageGraphic = vacina_etnia("graf_vacina_etnia"))
 Vacina_etnia.save()
-Vacina_Categoria = Graphic(imageGraphic = vacina_categoria())
+Vacina_Categoria = Graphic(imageGraphic = vacina_categoria("graf_vacina_categoria"))
 Vacina_Categoria.save()
-Vacina_Genero = Graphic(imageGraphic = vacina_genero_biologico())
+Vacina_Genero = Graphic(imageGraphic = vacina_genero_biologico("graf_vacina_genero_biologico"))
 Vacina_Genero.save()
-Uf_Vacinados = Graphic(imageGraphic = uf_dos_vacinados())
+Uf_Vacinados = Graphic(imageGraphic = uf_dos_vacinados("graf_uf_vacinados"))
 Uf_Vacinados.save()
-Dose_Tomada = Graphic(imageGraphic = dose_tomada())
+Dose_Tomada = Graphic(imageGraphic = dose_tomada("graf_dose_tomada"))
 Dose_Tomada.save()
 
 
