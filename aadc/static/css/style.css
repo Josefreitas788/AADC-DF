@@ -10,6 +10,7 @@ body {
 
 img {
     border-radius: 20px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .main-window {
@@ -32,12 +33,13 @@ img {
     font-family: sans-serif;
     text-align: center;
     margin-left: 8px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     color: white;
 }
 
 .main-window-menu {
     padding: 20px;
-    width: 18%;
+    width: 17.5%;
 }
 
 .main-window-menu a {
@@ -66,6 +68,7 @@ img {
     background-color: rgb(88, 119, 255);
     overflow: hidden;
     height: 60px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     width: 100%;
     position: relative;
 }
@@ -74,7 +77,8 @@ img {
     float: right;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 20px 16px;
+    height:60px;
     text-decoration: none;
     font-size: 17px;
     font-family: Arial, Helvetica, sans-serif;
@@ -85,7 +89,7 @@ img {
     padding: 4px;
     fill: #fff;
     padding-top: 0.7em;
-    padding-left: 1em;
+    padding-left: 20px;
 }
 
 .menu-titulo {
