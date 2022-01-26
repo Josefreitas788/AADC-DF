@@ -223,9 +223,9 @@ def vacina_categoria(name):
 ####################### Classificação por genero biologico #######################
 
 def vacina_genero_biologico(name):
-    #Fltrando coluna
+    #Filtrando coluna
     graf = (dados['paciente_enumsexobiologico'].value_counts())
-    #Criando o grafico
+    #Criando o gráfico
     graf.plot.pie(title = 'Gênero que mais se vacinou no  DF\n', autopct='%1.1f%%',xlabel= 'Vacinas', ylabel = 'Porcentagem')
 
     #Django
@@ -239,9 +239,9 @@ def vacina_genero_biologico(name):
     #return uri    
 ####################### Classificação por UF dos vacinados #######################
 def uf_dos_vacinados(name):
-    #Fltrando coluna
+    #Filtrando coluna
     graf = (dados['paciente_endereco_uf'].value_counts())
-    #Criando o grafico
+    #Criando o gráfico
     graf.plot.bar(title = 'UF dos pacientes que foram vacinados no DF\n', xlabel= 'Vacinas', ylabel = 'Frequência', color = "Yellow")
 
     #Django
@@ -257,7 +257,7 @@ def uf_dos_vacinados(name):
 def dose_tomada(name):
     #Filtrando as colunas
     graf = (dados['vacina_descricao_dose'].value_counts())
-    #Criando os graficos
+    #Criando os gráficos
     graf.plot.barh(title = 'Quantidade das doses já tomadas DF\n', xlabel= 'Vacinas', ylabel = 'Frequência', color="purple")
 
     #Django
