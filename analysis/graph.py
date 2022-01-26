@@ -39,7 +39,7 @@ dados_vacina.drop(dados_vacina.loc[dados_vacina['paciente_racacor_valor'] == 50.
 #Alteração na UF do paciente
 dados_vacina.loc[dados_vacina['paciente_endereco_uf'] == 'XX'] = 'Não informado'
 
-####################### Quantidade de pessoas que tomaram a 1°, 2° e 3° dose #######################
+####################### Função para salvar os graficos #######################
 
 def save_graph(name, buf):
     if not os.path.isfile(name):
@@ -47,16 +47,22 @@ def save_graph(name, buf):
         f.write(buf)
         f.close()
 
+####################### Quantidade de pessoas que tomaram a 1°, 2° e 3° dose #######################
+
 def graf_quant_dose123(name):
     # Filtrando dados do DataFrame
-    colunas = ['vacina_descricao_dose']
-    doses = dados_vacina.filter(items=colunas)
- 
-    graf = doses.value_counts()
 
-    labels = ['1° Dose', '2° Dose', 'Dose única','Não informado' ]
+    colunas = ['vacina_descricao_dose']
+    vacina_dose = dados_vacina.filter(items=colunas)
+    
+    # Removendo dados de não informado
+    vacina_dose.drop(vacina_dose.loc[vacina_dose['vacina_descricao_dose'] == 'Não informado'].index, inplace=True)
+ 
+    graf = vacina_dose.value_counts()
+
+    labels = ['1° Dose', '2° Dose', 'Dose única']
     plt.style.use("ggplot")
-    explode = (0.1, 0.0, 0.0, 0.0)
+    explode = (0.1, 0.0, 0.0)
 
     labels1 = ['', '', '', '']
     graf.plot.pie(autopct='%1.1f%%', shadow=True, startangle = 90, ylabel='', title = 'Porcentagem de pessoas que tomaram a 1° dose, 2° dose e a dose única.\n', subplots=True, labels = labels1,explode= explode ) 
