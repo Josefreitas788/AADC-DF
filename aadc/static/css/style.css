@@ -20,7 +20,7 @@ img {
     margin-right: auto;
     margin-top: 1em;
     margin-bottom: 1em;
-    width: 80%;
+    width: 82%;
     height: 80%;
     display: flex;
 }
@@ -65,12 +65,12 @@ img {
 .menu-principal {
     background-color: rgb(88, 119, 255);
     overflow: hidden;
-    height: 50px;
+    height: 60px;
     width: 100%;
     position: relative;
 }
 
-.menu-principal a {
+.menu-principal .menu-item {
     float: right;
     color: #f2f2f2;
     text-align: center;
@@ -84,23 +84,25 @@ img {
     display: inline-block !important;
     padding: 4px;
     fill: #fff;
+    padding-top: 0.7em;
+    padding-left: 1em;
 }
 
 .menu-titulo {
     display: inline-block !important;
     font-family: sans-serif;
-    padding-top: 0.5em;
+    padding-top: 0.7em;
     color: #fff;
     vertical-align: top;
 }
 
 /* Change the color of links on hover */
-.menu-principal a:hover {
+.menu-principal .menu-item:hover {
     background-color: rgb(255, 255, 255);
     color: black;
 }
 
-.menu-principal a:active {
+.menu-principal .menu-item:active {
     background-color: rgb(88, 119, 255);
     color: black;
 }

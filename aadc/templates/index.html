@@ -11,24 +11,31 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <div class="menu-principal">
-        <object type="image/svg+xml" data="{%static 'img/logo.svg' %}" class="menu-logo" height="50"></object>
-        <b class="menu-titulo">
-        APLICAÇÃO PARA ANÁLISE DE<br>
-        DADOS DE COVID-19 NO DF
-        </b>
-        <a href="#">Sobre</a>
-        <a href="#">Início</a>
+        <a href="index.html">
+            <object type="image/svg+xml" data="{%static 'img/logo.svg' %}" class="menu-logo" height="50"></object>
+            <b class="menu-titulo">
+            APLICAÇÃO PARA ANÁLISE DE<br>
+            DADOS DE COVID-19 NO DF
+            </b>
+        </a>
+        <a class="menu-item" href="#">Sobre</a>
+        <a class="menu-item" href="#">Início</a>
     </div>
 </head>
 
 <body>
 <div class="main-window">
 <section class="main-window-menu">
+    {% for id, name in graphic_buttons.items %}
     <div>
-        <a href="#">Doses</a>
+        <a href="#" onclick="clickGraphButton('{{ id }}')">{{ name }}</a>
+    </div>
+    {% endfor %}
+    <!--<div>
+        <a href="#" onclick="clickGraphButton('graf_quant_dose')">Doses</a>
     </div>
     <div>
-        <a href="#">Estados</a>
+        <a href="#" onclick="clickGraphButton('graf_estados')">Estados</a>
     </div>
     <div>
         <a href="#">Paises</a>
@@ -38,14 +45,14 @@
     </div>
     <div>
         <a href="#">Vacina</a>
-    </div>
+    </div>-->
 </section>
 <table class="main-window-item">
     <tbody>
-        {%for graphic in graphics %}
+        {% for id, link in graphics.items %}
         <tr>
             <!--<td>{{ graphic }}</td>-->
-            <img class="{{ graphic_id }}" src="{%static graphic %}" alt="" height="550", width="700">
+            <img class="{{ id }}" src="{%static link %}" alt="" height="610", width="750" hidden>
         </tr>
         {% endfor %}
     </tbody>
@@ -61,5 +68,19 @@
     </div>
 </section>
 </div>
+<script>
+    document.getElementsByClassName("graf_quant_dose")[0].removeAttribute("hidden");
+    var graphics = ['graf_quant_dose', 'graf_estados', 'graf_paises', 'graf_faixa_etaria', 'graf_nome_vacina',
+    'graf_dose_tomada', 'graf_vacina_etnia', 'graf_vacina_categoria', 'graf_vacina_genero_biologico', 'graf_uf_vacinados'];
+    function clickGraphButton(id) {
+        var element = document.getElementsByClassName(id);
+        document.getElementsByClassName(id)[0].removeAttribute("hidden");
+        for (var i = 0; i < graphics.length; i++) {
+            if (graphics[i] != id) {
+                document.getElementsByClassName(graphics[i])[0].setAttribute("hidden", "true");
+            }
+        }
+    }
+</script>
 </body>
 </html>
