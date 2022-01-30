@@ -1,6 +1,8 @@
 # AADC-DF 📚💻
 Aplicação web em Django para visualização de dados da vacinação no DF.
 
+<img align="center" alt="HTML" height="300" width="680" src="https://github.com/Josefreitas788/AADC-DF/blob/main/docs/img/pagina_trabalho.png"></center>
+
 ## 🚀 Começando
 ![GitHub language count](https://img.shields.io/github/languages/count/Josefreitas788/AADC-DF?color=green&style=for-the-badge)
 ![GitHub top language](https://img.shields.io/github/languages/top/Josefreitas788/AADC-DF?color=green&style=for-the-badge)
