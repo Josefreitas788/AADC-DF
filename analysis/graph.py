@@ -18,25 +18,26 @@ if not os.path.isfile(arquivo_csv):
 
 dados = pd.read_csv(arquivo_csv, sep = ';')
 
-#colunas_selecionadas =  ['paciente_idade', 'paciente_enumsexobiologico', 'paciente_racacor_valor', 'paciente_endereco_nmmunicipio', 'paciente_endereco_nmpais', 'paciente_endereco_uf', 'estalecimento_nofantasia', 'vacina_grupoatendimento_nome', 'vacina_categoria_nome', 'vacina_descricao_dose', 'vacina_nome', 'paciente_endereco_cep']
+colunas_selecionadas =  ['paciente_idade', 'paciente_enumsexobiologico', 'paciente_racacor_valor', 'paciente_endereco_nmmunicipio', 'paciente_endereco_nmpais', 'paciente_endereco_uf', 'estalecimento_nofantasia', 'vacina_grupoatendimento_nome', 'vacina_categoria_nome', 'vacina_descricao_dose', 'vacina_nome', 'paciente_endereco_cep']
 
 # Novo Dataframe com as colunas selecionadas
-#dados_vacina = dados.filter(items = colunas_selecionadas)
+dados_vacina = dados.filter(items = colunas_selecionadas)
 
 # Idades inconsistentes foram substituidas pela média aritmética da coluna 'paciente_idade'
-#dados_vacina.loc[dados_vacina['paciente_idade'].isnull()] = dados_vacina['paciente_idade'].mean()
+dados_vacina.loc[dados_vacina['paciente_idade'].isnull()] = dados_vacina['paciente_idade'].mean()
 
 # Dados nulos das outras colunas foram substituidos por 'Não informado'
-#dados_vacina.fillna("Não informado", inplace = True)
+dados_vacina.fillna("Não informado", inplace = True)
 
 # Soma de valores nulos em cada coluna
 #print(dados_vacina.isnull().sum())
 
 # Drop paciente_racacor_valor = 50.59404737212269]
-#dados_vacina.drop(dados_vacina.loc[dados_vacina['paciente_racacor_valor'] == 50.59404737212269].index, inplace=True)
+dados_vacina.drop(dados_vacina.loc[dados_vacina['paciente_racacor_valor'] == 50.59404737212269].index, inplace=True)
 
 #Alteração na UF do paciente
-#dados_vacina.loc[dados_vacina['paciente_endereco_uf'] == 'XX'] = 'Não informado'
+dados_vacina.loc[dados_vacina['paciente_endereco_uf'] == 'XX'] = 'Não informado'
+
 
 ####################### Quantidade de pessoas que tomaram a 1°, 2° e 3° dose #######################
 
